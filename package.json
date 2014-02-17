@@ -1,11 +1,13 @@
 {
-  "name": "angular_project_seed",
+  "name": "applicantTrackingSystem",
   "version": "0.0.1",
-  "description": "AngularJS Project Seed",
+  "description": "Generic recruiting tool for tracking job applicants",
   "scripts": {
     "test": "grunt test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "express": "~3.4.8"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
@@ -24,6 +26,7 @@
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-watch": "~0.5.2",
     "grunt-google-cdn": "~0.2.0",
+    "grunt-express-server": "~0.4.11",
     "grunt-newer": "~0.5.4",
     "grunt-ngmin": "~0.0.2",
     "grunt-rev": "~0.1.0",
@@ -46,7 +49,10 @@
     "karma": "~0.10.9",
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "grunt-browserify2": "~0.1.8",
-    "karma-browserify": "0.0.6"
+    "karma-browserify": "0.0.6",
+    "grunt-html2js": "~0.2.4",
+    "connect-livereload": "~0.3.2",
+    "load-grunt-config": "~0.7.1"
   },
   "engines": {
     "node": ">=0.8.0"

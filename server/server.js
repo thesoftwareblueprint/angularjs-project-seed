@@ -1,37 +1,41 @@
 /**
- * NODEJS Server Definition
+ * Created by walter on 2/14/14.
  */
-var express = require('express'),
-    app = express(),
-    http = require('http'),
-    https = require('https'),
-    server = http.createServer(app),
-    io = require('socket.io').listen(server);
+/**
+ * Module dependencies.
+ */
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+var express = require('express')
+    , http = require('http')
+    , path = require('path');
 
-app.configure(function () {
-    // use the system property, or default back to 8080
-    app.set('port', process.env.PORT || 9000);
+var app = express();
 
-    app.use(express.logger());
+// all environments
+app.set('port', process.env.PORT || 3000);
 
-    // static
-    app.use(express.static(__dirname + '/.tmp/'));
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
 
-    app.use(express.errorHandler({
-        dumpExceptions: true,
-        showStack: true
-    }));
+// live reload - for debugging only (remove in production)
+app.use(require('connect-livereload')({
+    port: 35729,
+    excludeList: ['.woff', '.flv']
+}));
 
-    // live reload - for debugging only (remove in production)
-    app.use(require('connect-livereload')({
-        port: 35729,
-        excludeList: ['.woff', '.flv']
-    }));
+// development only
+if ('production' == app.get('env')) {
+    app.use(express.static(path.join(__dirname, '../app/dist')));
+} else {
+    app.use(express.static(path.join(__dirname, '../app/dist/')));
+    app.use(express.errorHandler());
+}
+
+
+
+http.createServer(app).listen(app.get('port'), function () {
+    console.log("Express server listening on port %d in %s mode", app.get('port'), app.get('env'));
 });
-
-// http
-server.listen(app.get('port'));
-
-module.exports = app;

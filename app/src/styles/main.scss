@@ -1,0 +1,94 @@
+$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+
+@import "../modules/main/main";
+@import "../modules/login/login";
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Droid Sans', serif;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+}
+
+#content-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+
+  .user-options {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 120px;
+    width: 250px;
+
+    ul, ul li {
+      list-style: none;
+    }
+  }
+
+  .nav, ul, ul li, .user-options {
+    line-height: 40px;
+  }
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 19px;
+  color: #0081c2;
+  font-size: 3em;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+}

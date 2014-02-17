@@ -6,7 +6,7 @@
  * @param $location
  * @constructor
  */
-var MainController = function($scope, $window, $location) {
+var LoginController = function($scope, $window, $location, authenticationService) {
 
     $scope.awesomeThings = [
         'HTML5 Boilerplate',
@@ -15,6 +15,11 @@ var MainController = function($scope, $window, $location) {
     ];
 
     $scope.appTitle = "Applicant Tracking System";
+
+    $scope.login = function() {
+        //attempt to login the user using the username and password.
+        authenticationService.login('walter','password');
+    };
 
     /**
      * Invoked on startup, like a constructor.
@@ -25,5 +30,5 @@ var MainController = function($scope, $window, $location) {
     init();
 };
 
-MainController.$inject = ['$scope', '$window', '$location'];
-module.exports = MainController;
+LoginController.$inject = ['$scope', '$window', '$location', 'authenticationService'];
+module.exports = LoginController;

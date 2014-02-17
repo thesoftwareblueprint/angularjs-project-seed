@@ -1,23 +1,25 @@
 'use strict';
+require('ats-templates');
 
-var App = angular.module('testDriverApp', [
+var App = function($urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+};
+
+App.$inject = ['$urlRouterProvider'];
+
+angular.module('atsApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    require('./modules/main').name
-    ])
+    'ui.router',
+    'ats.templates',
+    require('./modules/main').name,
+    require('./modules/login').name,
+    require('./common/services').name
+    ], App);
 
-    .config(['$routeProvider', function ($routeProvider) {
-        //default route
-        $routeProvider
-            .when('/', {
-                templateUrl: 'modules/main/main.html',
-                controller: 'MainController'
-            })
-            .otherwise({redirectTo: "/"});
-    }]);
 
-App.$inject = ['$routeProvider'];
+
 
 
